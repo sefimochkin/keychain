@@ -4,7 +4,7 @@ This will become the storage part of the keychain. This is the canister with whi
 
 ## Proposed API
 
-Terminology:
+### Terminology
 
 `Keydata` -- a struct where all of the crucial data is stored. Email address, phone number(some day), etc.
 
@@ -14,7 +14,7 @@ Terminology:
 
 `owner_id` -- an id that identifies that the user has the access to their private key. (I may be mistaken that this is the only thing needed. Metamask does this in some way, and I am currently researching it). This can be an IC::Principal, but it will make the user create an ICP's Internet Indentity first, and it can be too much. Though we can use IC::Principal as an alternative way to login.
 
-API:
+### API
 
 `init_keydata` -- a call to init the main data. Called when the user sets up their keychain plugin for the first time.
 
