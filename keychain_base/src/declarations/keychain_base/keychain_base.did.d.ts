@@ -1,15 +1,15 @@
 import type { Principal } from '@dfinity/principal';
-export interface EmptySuccessResponse { 'code' : bigint }
+export interface EmptySuccessResponse { 'code' : number }
 export interface ErrorResponse {
   'error_message' : string,
-  'error_code' : bigint,
+  'error_code' : number,
 }
 export interface GetKeyDataSuccessResponse {
-  'code' : bigint,
+  'code' : number,
   'data' : [] | [KeyDataCore],
 }
 export interface GetObfuscatedDataSuccessResponse {
-  'code' : bigint,
+  'code' : number,
   'data' : [] | [Array<ObfuscatedDataCore>],
 }
 export interface KeyDataCore {
@@ -26,26 +26,26 @@ export interface ObfuscatedDataCore {
 }
 export interface _SERVICE {
   'change_keydata' : (arg_0: KeyDataCore, arg_1: string) => Promise<
-      { 'error' : ErrorResponse } |
-        { 'success' : EmptySuccessResponse }
+      { 'Error' : ErrorResponse } |
+        { 'Success' : EmptySuccessResponse }
     >,
   'get_keydata' : (arg_0: string) => Promise<
-      { 'error' : ErrorResponse } |
-        { 'success' : GetKeyDataSuccessResponse }
+      { 'Error' : ErrorResponse } |
+        { 'Success' : GetKeyDataSuccessResponse }
     >,
   'get_obfuscated_data' : (arg_0: string) => Promise<
-      { 'error' : ErrorResponse } |
-        { 'success' : GetObfuscatedDataSuccessResponse }
+      { 'Error' : ErrorResponse } |
+        { 'Success' : GetObfuscatedDataSuccessResponse }
     >,
   'init_keydata' : (arg_0: KeyDataCore, arg_1: string) => Promise<
-      { 'error' : ErrorResponse } |
-        { 'success' : EmptySuccessResponse }
+      { 'Error' : ErrorResponse } |
+        { 'Success' : EmptySuccessResponse }
     >,
   'init_obfuscated_data' : (
       arg_0: ObfuscatedDataCore,
       arg_1: string,
     ) => Promise<
-      { 'error' : ErrorResponse } |
-        { 'success' : EmptySuccessResponse }
+      { 'Error' : ErrorResponse } |
+        { 'Success' : EmptySuccessResponse }
     >,
 }

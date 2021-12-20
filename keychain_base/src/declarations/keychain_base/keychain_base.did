@@ -13,29 +13,29 @@ type ObfuscatedDataCore = record {
 };
 
 type ErrorResponse = record {
-    "error_code": nat;
+    "error_code": nat16;
     "error_message": text;
 };
 
 type EmptySuccessResponse = record {
-    "code": nat;
+    "code": nat16;
 };
 
 type GetKeyDataSuccessResponse = record {
-    "code": nat;
+    "code": nat16;
     "data": opt KeyDataCore;
 };
 
 type GetObfuscatedDataSuccessResponse = record {
-    "code": nat;
+    "code": nat16;
     "data": opt vec ObfuscatedDataCore;
 };
 
 
 service : {
-    "init_keydata": (KeyDataCore, text) -> (variant{success: EmptySuccessResponse; error: ErrorResponse});
-    "init_obfuscated_data": (ObfuscatedDataCore, text) -> (variant{success: EmptySuccessResponse; error: ErrorResponse});
-    "get_keydata": (text) -> (variant{success: GetKeyDataSuccessResponse; error: ErrorResponse}) query;
-    "get_obfuscated_data": (text) -> (variant{success: GetObfuscatedDataSuccessResponse; error: ErrorResponse}) query;
-    "change_keydata": (KeyDataCore, text) -> (variant{success: EmptySuccessResponse; error: ErrorResponse});
+    "init_keydata": (KeyDataCore, text) -> (variant{Success: EmptySuccessResponse; Error: ErrorResponse});
+    "init_obfuscated_data": (ObfuscatedDataCore, text) -> (variant{Success: EmptySuccessResponse; Error: ErrorResponse});
+    "get_keydata": (text) -> (variant{Success: GetKeyDataSuccessResponse; Error: ErrorResponse}) query;
+    "get_obfuscated_data": (text) -> (variant{Success: GetObfuscatedDataSuccessResponse; Error: ErrorResponse}) query;
+    "change_keydata": (KeyDataCore, text) -> (variant{Success: EmptySuccessResponse; Error: ErrorResponse});
 }

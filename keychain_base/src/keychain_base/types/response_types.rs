@@ -2,13 +2,13 @@ use ic_cdk::export::candid::{CandidType, Deserialize};
 
 #[derive(Clone, CandidType, Deserialize, PartialEq, Debug)]
 pub struct ErrorResponse {
-    pub error_code: u32,
+    pub error_code: u16,
     pub error_message: String,
 }
 
 #[derive(Clone, CandidType, Deserialize, PartialEq, Debug)]
 pub struct SuccessResponse<T> {
-    pub code: u32,
+    pub code: u16,
     pub data: Option<T>,
 }
 

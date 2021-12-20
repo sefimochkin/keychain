@@ -6,11 +6,11 @@ export const idlFactory = ({ IDL }) => {
   });
   const ErrorResponse = IDL.Record({
     'error_message' : IDL.Text,
-    'error_code' : IDL.Nat,
+    'error_code' : IDL.Nat16,
   });
-  const EmptySuccessResponse = IDL.Record({ 'code' : IDL.Nat });
+  const EmptySuccessResponse = IDL.Record({ 'code' : IDL.Nat16 });
   const GetKeyDataSuccessResponse = IDL.Record({
-    'code' : IDL.Nat,
+    'code' : IDL.Nat16,
     'data' : IDL.Opt(KeyDataCore),
   });
   const ObfuscatedDataCore = IDL.Record({
@@ -21,7 +21,7 @@ export const idlFactory = ({ IDL }) => {
     'obfuscated_email_address' : IDL.Text,
   });
   const GetObfuscatedDataSuccessResponse = IDL.Record({
-    'code' : IDL.Nat,
+    'code' : IDL.Nat16,
     'data' : IDL.Opt(IDL.Vec(ObfuscatedDataCore)),
   });
   return IDL.Service({
@@ -29,8 +29,8 @@ export const idlFactory = ({ IDL }) => {
         [KeyDataCore, IDL.Text],
         [
           IDL.Variant({
-            'error' : ErrorResponse,
-            'success' : EmptySuccessResponse,
+            'Error' : ErrorResponse,
+            'Success' : EmptySuccessResponse,
           }),
         ],
         [],
@@ -39,8 +39,8 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Text],
         [
           IDL.Variant({
-            'error' : ErrorResponse,
-            'success' : GetKeyDataSuccessResponse,
+            'Error' : ErrorResponse,
+            'Success' : GetKeyDataSuccessResponse,
           }),
         ],
         ['query'],
@@ -49,8 +49,8 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Text],
         [
           IDL.Variant({
-            'error' : ErrorResponse,
-            'success' : GetObfuscatedDataSuccessResponse,
+            'Error' : ErrorResponse,
+            'Success' : GetObfuscatedDataSuccessResponse,
           }),
         ],
         ['query'],
@@ -59,8 +59,8 @@ export const idlFactory = ({ IDL }) => {
         [KeyDataCore, IDL.Text],
         [
           IDL.Variant({
-            'error' : ErrorResponse,
-            'success' : EmptySuccessResponse,
+            'Error' : ErrorResponse,
+            'Success' : EmptySuccessResponse,
           }),
         ],
         [],
@@ -69,8 +69,8 @@ export const idlFactory = ({ IDL }) => {
         [ObfuscatedDataCore, IDL.Text],
         [
           IDL.Variant({
-            'error' : ErrorResponse,
-            'success' : EmptySuccessResponse,
+            'Error' : ErrorResponse,
+            'Success' : EmptySuccessResponse,
           }),
         ],
         [],
