@@ -1,0 +1,41 @@
+type KeyDataCore = record {
+    "email_address": text;
+    "phone_number": opt text;
+    "address": opt text;
+};
+
+type ObfuscatedDataCore = record {
+    "website_url": text;
+    "website_id": opt text;
+    "obfuscated_email_address": text;
+    "obfuscated_phone_number": opt text;
+    "password": opt text;
+};
+
+type ErrorResponse = record {
+    "error_code": nat16;
+    "error_message": text;
+};
+
+type EmptySuccessResponse = record {
+    "code": nat16;
+};
+
+type GetKeyDataSuccessResponse = record {
+    "code": nat16;
+    "data": opt KeyDataCore;
+};
+
+type GetObfuscatedDataSuccessResponse = record {
+    "code": nat16;
+    "data": opt vec ObfuscatedDataCore;
+};
+
+
+service : {
+    "init_keydata": (KeyDataCore, text) -> (variant{Success: EmptySuccessResponse; Error: ErrorResponse});
+    "init_obfuscated_data": (ObfuscatedDataCore, text) -> (variant{Success: EmptySuccessResponse; Error: ErrorResponse});
+    "get_keydata": (text) -> (variant{Success: GetKeyDataSuccessResponse; Error: ErrorResponse}) query;
+    "get_obfuscated_data": (text) -> (variant{Success: GetObfuscatedDataSuccessResponse; Error: ErrorResponse}) query;
+    "change_keydata": (KeyDataCore, text) -> (variant{Success: EmptySuccessResponse; Error: ErrorResponse});
+}

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+python3 $SCRIPT_DIR/development/comment_tests_dependencies/prepare_deploy.py $SCRIPT_DIR
+dfx deploy
+python3 $SCRIPT_DIR/development/comment_tests_dependencies/finish_deploy.py $SCRIPT_DIR

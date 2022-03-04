@@ -1,0 +1,36 @@
+{
+  "canisters": {
+    "keychain_base": {
+      "candid": "src/keychain_base/keychain_base.did",
+      "package": "keychain_base",
+      "type": "rust"
+    },
+    "keychain_base_assets": {
+      "dependencies": [
+        "keychain_base"
+      ],
+      "frontend": {
+        "entrypoint": "src/keychain_base_assets/src/index.html"
+      },
+      "source": [
+        "src/keychain_base_assets/assets",
+        "dist/keychain_base_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.8.4",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
